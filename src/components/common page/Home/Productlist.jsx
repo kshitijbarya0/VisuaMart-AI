@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../../../redux/productsSlice';
 import SliderBanner from './slider';
-import axios from 'axios';
 function Productlist() {
-    const [data, setData] = useState([]);
-    const fetchData = async () => {
-        const res = await axios.get('https://fakestoreapi.com/products')
-        setData(res.data)
-    }
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state.products.items);
     useEffect(() => {
-        fetchData()
-    }, [])
+        if (data.length == 0) {
+            dispatch(fetchProducts())
+        }
+    }, [dispatch])
     return (
         <div className='Product-list'>
-            <SliderBanner />
             <div className="product-container">
                 {data.map((item) => (
                     <div key={item.id} className="product-card">
