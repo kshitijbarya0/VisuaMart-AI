@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Kshitij kishore barya",
+      "email": "baryakshitij@gmail.com",
+      "address": "Kawardha, CG 491195",
+      "phone": "+91 6263879502"
+    }
+  ],
+  "cart": [
+    {
+      "id": "1",
+      "userId": 1,
+      "items": [
+        {
+          "productId": 101,
+          "productName": "Laptop",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}
