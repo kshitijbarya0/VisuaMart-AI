@@ -8,7 +8,6 @@ export const updateUser = createAsyncThunk('user/updateUser', async (data) => {
     const res = await axios.patch(`http://localhost:3001/users/1`, data);
     return res.data;
 });
-
 const userSlice = createSlice({
     name: 'user',
     initialState: {

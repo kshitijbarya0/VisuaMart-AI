@@ -5,8 +5,10 @@ import { IoStorefrontSharp } from "react-icons/io5";
 import { Plus } from "lucide-react";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, updateUser } from "../../../redux/userSlice"
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { email, phone, address } = useSelector((state) => state.user);
 
@@ -18,6 +20,9 @@ function Navbar() {
     const [isEditingPhone, setIsEditingPhone] = useState(false);
     const [isEditingAddress, setIsEditingAddress] = useState(false);
 
+    const [searchItem, setSearchItem] = useState("")
+
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => setIsModalOpen(true);
     const handleOk = () => setIsModalOpen(false);
@@ -26,16 +31,34 @@ function Navbar() {
     useEffect(() => {
         dispatch(fetchUser());
     }, [dispatch]);
-
     return (
         <div className='nav-bar'>
-            <div><h1><IoStorefrontSharp /></h1></div>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px" }}>
-                <input type="text" placeholder='search store name or product' />
-                <span style={{ fontSize: "20px", cursor: "pointer" }}><FaSearch /></span>
+            <div><h1 style={{ cursor: "pointer" }} onClick={() => { navigate("/") }}><IoStorefrontSharp /></h1></div>
+            <div>
+                <form style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px" }} onSubmit={(e) => {
+                    e.preventDefault();
+                    if (searchItem.trim() !== "") {
+                        navigate(`/search-result?search=${encodeURIComponent(searchItem.trim())}`);
+                        setSearchItem("");
+                    }
+                }}>
+                    <input
+                        type="text"
+                        placeholder='search store name or product'
+                        value={searchItem}
+                        onChange={(e) => { setSearchItem(e.target.value) }}
+                        required
+                    />
+                    <span style={{ fontSize: "20px", cursor: "pointer" }} onClick={() => {
+                        if (searchItem.trim() !== "") {
+                            navigate(`/search-result?search=${encodeURIComponent(searchItem.trim())}`);
+                            setSearchItem("");
+                        }
+                    }}><FaSearch /></span>
+                </form>
             </div>
             <div style={{ display: "flex", gap: "20px" }}>
-                <h2 style={{ cursor: "pointer" }}><FaShoppingCart /></h2>
+                <h2 style={{ cursor: "pointer" }} onClick={() => { navigate("/cart") }}><FaShoppingCart /></h2>
                 <h2 style={{ cursor: "pointer" }} onClick={showModal}><FaUserCircle /></h2>
             </div>
 

@@ -4,7 +4,7 @@
       "id": "1",
       "name": "Kshitij kishore barya",
       "email": "baryakshitij@gmail.com",
-      "address": "Kawardha, CG 491195",
+      "address": "delhi, 10001",
       "phone": "+91 6263879502"
     }
   ],
@@ -12,13 +12,7 @@
     {
       "id": "1",
       "userId": 1,
-      "items": [
-        {
-          "productId": 101,
-          "productName": "Laptop",
-          "quantity": 1
-        }
-      ]
+      "items": []
     }
   ]
 }

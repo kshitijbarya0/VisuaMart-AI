@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../../../redux/productsSlice';
-import SliderBanner from './slider';
+import { updateUserCart } from "../../../redux/userCart"
+import { message } from 'antd'
 function Productlist() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.products.items);
@@ -10,6 +11,16 @@ function Productlist() {
             dispatch(fetchProducts())
         }
     }, [dispatch])
+    const handleProductList = (item) => {
+        dispatch(updateUserCart({
+            id: item.id,
+            title: item.title,
+            image: item.image,
+            price: item.price,
+            quantity: 1
+        }));
+        message.success("Successfully added")
+    }
     return (
         <div className='Product-list'>
             <div className="product-container">
@@ -27,7 +38,7 @@ function Productlist() {
 
                         <div className="button-group">
                             <button className="btn buy">Buy Now</button>
-                            <button className="btn cart">Add to Cart</button>
+                            <button className="btn cart" onClick={() => { handleProductList(item) }}>Add to Cart</button>
                         </div>
                     </div>
                 ))}

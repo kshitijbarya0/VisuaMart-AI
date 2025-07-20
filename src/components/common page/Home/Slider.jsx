@@ -23,7 +23,7 @@ const SliderBanner = () => {
     ];
 
     return (
-        <div className="banner-slider">
+        <div className="banner-slider" style={{marginTop:"80px"}}>
             <Slider {...settings}>
                 {images.map((url, index) => (
                     <div key={index}>
