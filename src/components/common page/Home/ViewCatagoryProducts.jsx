@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import SliderBanner from './slider';
 function ViewCatagoryProducts() {
+    const navigate = useNavigate()
     const categories = [
         {
             id: 1,
@@ -43,16 +44,13 @@ function ViewCatagoryProducts() {
             image: "",
         },
     ];
-    const handleClicked = (item) => {
-        console.log(item.name, item.id)
-    }
     return <>
         <div>
             <SliderBanner />
             <div className='viewcatagory-item'>
                 {
                     categories.map((item) => (
-                        <div key={item.id} className='catagory-item' onClick={() => { handleClicked(item) }}>
+                        <div key={item.id} className='catagory-item' onClick={() => { navigate(`/viewCatagory-result?catagory=${encodeURIComponent(item.name.trim())}`); }}>
                             <h2>{item.name}</h2>
                             <img src="https://placehold.co/250x200" alt="categories" />
                         </div>

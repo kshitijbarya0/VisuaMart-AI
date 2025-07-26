@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../../../redux/productsSlice';
+import { updateUserCart } from "../../../redux/userCart"
+import { message } from 'antd'
 
 function ShowSearchResult() {
     const dispatch = useDispatch();
@@ -18,6 +20,22 @@ function ShowSearchResult() {
     const res = data.filter(data =>
         data.title.toLowerCase().includes(query.toLowerCase())
     );
+    const handleAddToCart = async (item) => {
+        try {
+            const res = await dispatch(updateUserCart({
+                id: item.id,
+                title: item.title,
+                image: item.image,
+                price: item.price,
+                quantity: 1
+            })).unwrap();
+
+            message.success("Successfully added");
+        } catch (err) {
+            message.error(err || "Something went wrong while adding to cart");
+        }
+
+    }
     return <>
         <div className='Showsearch' style={{ marginTop: "100px" }}>
             <Navbar />
@@ -31,7 +49,7 @@ function ShowSearchResult() {
                             border: "1px solid #e0e0e0",
                             borderRadius: "8px",
                             padding: "16px",
-                            marginLeft:"15rem",
+                            marginLeft: "15rem",
                             margin: "12px 0",
                             backgroundColor: "#fff",
                             boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
@@ -139,7 +157,7 @@ function ShowSearchResult() {
                                         flexWrap: "wrap"
                                     }}>
                                         <button
-                                            // onClick={handleAddToCart}
+                                            onClick={()=> {handleAddToCart(item)}}
                                             style={{
                                                 backgroundColor: "#ff9900",
                                                 border: "1px solid #ff9900",

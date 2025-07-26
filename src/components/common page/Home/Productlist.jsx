@@ -11,15 +11,21 @@ function Productlist() {
             dispatch(fetchProducts())
         }
     }, [dispatch])
-    const handleProductList = (item) => {
-        dispatch(updateUserCart({
-            id: item.id,
-            title: item.title,
-            image: item.image,
-            price: item.price,
-            quantity: 1
-        }));
-        message.success("Successfully added")
+    const handleProductList = async (item) => {
+        try {
+            const res = await dispatch(updateUserCart({
+                id: item.id,
+                title: item.title,
+                image: item.image,
+                price: item.price,
+                quantity: 1
+            })).unwrap();
+
+            message.success("Successfully added");
+        } catch (err) {
+            message.error(err || "Something went wrong while adding to cart");
+        }
+
     }
     return (
         <div className='Product-list'>

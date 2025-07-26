@@ -13,17 +13,29 @@ function Cart() {
         }
     }, [dispatch, cartItems.length]);
 
-    const handleIncrease = (id) => {
-        dispatch(Inc_Dec({ id, operand: "Add" }));
+    const handleIncrease = async (id) => {
+       try {
+        await dispatch(Inc_Dec({ id, operand: "Add" })).unwrap();
+       } catch (error) {
+          message.error(error)
+       }
     };
 
-    const handleDecrease = (id) => {
-        dispatch(Inc_Dec({ id, operand: "Sub" }));
+    const handleDecrease = async (id) => {
+        try {
+            await dispatch(Inc_Dec({ id, operand: "Sub" })).unwrap();
+        } catch (error) {
+            message.error(error)
+        }
     };
 
-    const handleRemove = (id) => {
-        dispatch(removeItemFromCart(id));
-        message.success("Successfully removed")
+    const handleRemove = async (id) => {
+       try {
+         await dispatch(removeItemFromCart(id)).unwrap();
+         message.success("Successfully removed")
+       } catch (error) {
+         message.error(error)
+       }
     };
 
     const calculateTotal = () => {

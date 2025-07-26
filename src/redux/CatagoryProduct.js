@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const res = await axios.get('https://fakestoreapi.com/products');
+export const fetchCatagory = createAsyncThunk('Catagory/fetchCatagory', async ({ query }) => {
+    const res = await axios.get(`https://fakestoreapi.com/products/category/${query}`);
     return res.data;
 });
 
-const productsSlice = createSlice({
-    name: 'products',
+const CatagoryProducts = createSlice({
+    name: 'Catagory',
     initialState: {
         items: [],
         loading: false,
@@ -15,14 +15,14 @@ const productsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProducts.pending, (state) => {
+            .addCase(fetchCatagory.pending, (state) => {
                 state.loading = true;
-            }) 
-            .addCase(fetchProducts.fulfilled, (state, action) => {
+            })
+            .addCase(fetchCatagory.fulfilled, (state, action) => {
                 state.loading = false;
                 state.items = action.payload;
             })
-            .addCase(fetchProducts.rejected, (state, action) => {
+            .addCase(fetchCatagory.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             });
@@ -30,4 +30,4 @@ const productsSlice = createSlice({
 });
 
 
-export default productsSlice.reducer;
+export default CatagoryProducts.reducer;

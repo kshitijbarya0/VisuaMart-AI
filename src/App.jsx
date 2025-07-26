@@ -5,6 +5,7 @@ import ViewCatagoryProducts from './components/common page/Home/ViewCatagoryProd
 import Cart from './components/common page/Home/Cart'
 import ShowSearchResult from './components/common page/Home/ShowSearchResult'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ViewSelectedProduct from './components/common page/Home/ViewSelectedProduct'
 function App() {
   return (
     <div className='app'>
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/search-result" element={<ShowSearchResult />} />
+          <Route path="viewCatagory-result" element={<ViewSelectedProduct />} />
         </Routes>
       </Router>
 
