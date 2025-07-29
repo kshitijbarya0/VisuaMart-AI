@@ -4,7 +4,7 @@
       "id": "1",
       "name": "Kshitij kishore barya",
       "email": "baryakshitij@gmail.com",
-      "address": "delhi, 10001",
+      "address": "Shanti deep rice mill, kawardha (491995), CG",
       "phone": "+91 6263879502"
     }
   ],
@@ -12,7 +12,15 @@
     {
       "id": "1",
       "userId": 1,
-      "items": []
+      "items": [
+        {
+          "id": 12,
+          "title": "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
+          "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
+          "price": 114,
+          "quantity": 1
+        }
+      ]
     }
   ]
 }

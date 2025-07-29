@@ -37,7 +37,8 @@ function ShowSearchResult() {
 
     }
     return <>
-        <div className='Showsearch' style={{ marginTop: "100px" }}>
+        <div className='Showsearch' style={{ marginTop: "100px", display:"flex", flexDirection:"column",
+            justifyContent:"center", alignItems:"center" }}>
             <Navbar />
             {
                 res.length === 0 ? (
@@ -87,7 +88,7 @@ function ShowSearchResult() {
                                         margin: "0 0 8px 0",
                                         fontSize: "18px",
                                         fontWeight: "500",
-                                        color: "#0066c0",
+                                        color: "#1a1a1bff",
                                         lineHeight: "1.3",
                                         cursor: "pointer"
                                     }}>
@@ -113,7 +114,7 @@ function ShowSearchResult() {
                                             </span>
                                             <span style={{
                                                 fontSize: "14px",
-                                                color: "#0066c0"
+                                                color: "#1e1e1fff"
                                             }}>
                                                 {item.rating.rate}
                                             </span>
@@ -148,7 +149,7 @@ function ShowSearchResult() {
                                         color: "#B12704",
                                         marginBottom: "12px"
                                     }}>
-                                        ${item.price}
+                                        ₹{item.price}
                                     </div>
 
                                     <div style={{
@@ -158,8 +159,8 @@ function ShowSearchResult() {
                                     }}>
                                         <button
                                             onClick={()=> {handleAddToCart(item)}}
+                                            className="btn cart"
                                             style={{
-                                                backgroundColor: "#ff9900",
                                                 border: "1px solid #ff9900",
                                                 borderRadius: "20px",
                                                 padding: "8px 16px",
@@ -170,20 +171,14 @@ function ShowSearchResult() {
                                                 minWidth: "120px",
                                                 transition: "all 0.2s"
                                             }}
-                                            onMouseEnter={(e) => {
-                                                e.target.style.backgroundColor = "#e88900";
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.target.style.backgroundColor = "#ff9900";
-                                            }}
                                         >
                                             Add to Cart
                                         </button>
 
                                         <button
                                             // onClick={handleBuyNow}
+                                            className="btn buy"
                                             style={{
-                                                backgroundColor: "#ff6b35",
                                                 border: "1px solid #ff6b35",
                                                 borderRadius: "20px",
                                                 padding: "8px 16px",
@@ -193,12 +188,6 @@ function ShowSearchResult() {
                                                 cursor: "pointer",
                                                 minWidth: "120px",
                                                 transition: "all 0.2s"
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.target.style.backgroundColor = "#e55a2b";
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.target.style.backgroundColor = "#ff6b35";
                                             }}
                                         >
                                             Buy Now

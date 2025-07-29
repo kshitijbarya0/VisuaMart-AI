@@ -33,7 +33,7 @@ function Navbar() {
     }, [dispatch]);
     return (
         <div className='nav-bar'>
-            <div><h1 style={{ cursor: "pointer" }} onClick={() => { navigate("/") }}><IoStorefrontSharp /></h1></div>
+            <div><h2 style={{ cursor: "pointer", display:"flex", justifyContent:"center", alignItems:"center", gap:"10px" }} onClick={() => { navigate("/") }}><IoStorefrontSharp />VisuaMart</h2></div>
             <div>
                 <form style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px" }} onSubmit={(e) => {
                     e.preventDefault();
