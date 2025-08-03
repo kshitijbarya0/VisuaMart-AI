@@ -19,6 +19,20 @@
           "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
           "price": 114,
           "quantity": 1
+        },
+        {
+          "id": 18,
+          "title": "MBJ Women's Solid Short Sleeve Boat Neck V ",
+          "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
+          "price": 9.85,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "title": "Mens Casual Premium Slim Fit T-Shirts ",
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "price": 22.3,
+          "quantity": 1
         }
       ]
     }

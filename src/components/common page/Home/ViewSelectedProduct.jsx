@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCatagory } from '../../../redux/CatagoryProduct';
 import { updateUserCart } from "../../../redux/userCart"
 function ViewSelectedProduct() {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const location = useLocation();
     const params = new URLSearchParams(location.search);
@@ -64,7 +65,7 @@ function ViewSelectedProduct() {
                             )
                         }
                         <div className="button-group">
-                            <button className="btn buy">Buy Now</button>
+                            <button className="btn buy" onClick={() => { navigate(`/BuyNow-product?ProD=${encodeURIComponent(item.id)}`) }}>Buy Now</button>
                             <button className="btn cart" onClick={() => { handleProductList(item) }}>Add to Cart</button>
                         </div>
                     </div>
